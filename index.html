@@ -1,91 +1,118 @@
 <!DOCTYPE html>
-<html lang="tr" class="dark">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Egemen'in Dünyası</title>
+    <title>Egemen Translate | Cyber Premium AI</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-        body {
-            transition: background-color 0.3s ease, color 0.3s ease;
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
         }
+        .cyber-glow-1 { animation: float-slow 8s ease-in-out infinite; }
+        .cyber-glow-2 { animation: float-slow 12s ease-in-out infinite reverse; }
     </style>
 </head>
-<body class="bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 text-slate-100 min-h-screen font-sans antialiased flex flex-col justify-between">
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased flex flex-col justify-between relative overflow-x-hidden">
 
-    <nav class="w-full max-w-5xl mx-auto px-6 py-6 flex justify-between items-center">
-        <span class="text-xl font-bold tracking-wider text-sky-400 bg-sky-500/10 px-3 py-1 rounded-lg border border-sky-500/20">EGEMEN.INFO</span>
-        <button onclick="temaDegistir()" class="cursor-pointer p-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-purple-500/50 text-amber-400 font-bold text-sm transition shadow-lg">
-            🌓 Tema
-        </button>
+    <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-indigo-500/10 blur-[120px] pointer-events-none cyber-glow-1"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-purple-500/10 blur-[150px] pointer-events-none cyber-glow-2"></div>
+
+    <nav class="w-full max-w-5xl mx-auto px-6 py-6 flex justify-between items-center relative z-10">
+        <span class="text-xl font-black tracking-widest bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent border border-indigo-500/30 px-4 py-1.5 rounded-2xl bg-slate-900/40 backdrop-blur-md shadow-[0_0_20px_-5px_rgba(99,102,241,0.3)]">
+            EGEMEN.AI
+        </span>
+        <div class="text-xs text-cyan-400 bg-cyan-500/10 border border-cyan-500/30 px-3 py-1.5 rounded-full font-mono font-bold shadow-[0_0_15px_-3px_rgba(34,211,238,0.2)] animate-pulse">
+            🌐 ONLINE AI
+        </div>
     </nav>
 
-    <main class="max-w-2xl mx-auto px-6 py-12 flex-grow flex flex-col justify-center">
-        <div class="kart bg-slate-900/70 border border-indigo-500/30 p-8 md:p-12 rounded-3xl shadow-[0_0_50px_-12px_rgba(99,102,241,0.3)] text-center backdrop-blur-md">
+    <main class="max-w-3xl mx-auto w-full px-6 py-12 flex-grow flex flex-col justify-center relative z-10">
+        <div class="bg-slate-900/60 border border-indigo-500/30 p-6 md:p-8 rounded-[2rem] shadow-[0_0_80px_-20px_rgba(99,102,241,0.3)] backdrop-blur-xl relative overflow-hidden">
             
-            <div class="text-5xl mb-6 animate-bounce">🌍</div>
-            
-            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 bg-gradient-to-r from-sky-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
-                Egemen'in Dünyası
-            </h1>
-            
-            <p class="text-slate-300 text-lg leading-relaxed mb-8">
-                Merhaba! Ben Egemen. Dijital dünyayı, yeni kültürleri keşfetmeyi ve aktif bir yaşam sürmeyi seviyorum.
-            </p>
+            <div class="flex items-center justify-between border-b border-slate-800/80 pb-4 mb-6">
+                <span class="text-xs font-black text-slate-400 tracking-widest uppercase">INPUT TEXT</span>
+                <div id="algilananDilEtiketi" class="text-xs bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/40 text-indigo-300 font-black px-4 py-1.5 rounded-full shadow-inner transition-all tracking-wide">
+                    🤖 AI Engine Ready...
+                </div>
+                <span class="text-xs font-black text-slate-400 tracking-widest uppercase">TRANSLATION</span>
+            </div>
 
-            <div class="space-y-4 text-left max-w-md mx-auto">
-                
-                <div class="kart bg-slate-900/80 border border-sky-500/20 p-4 rounded-xl flex items-center gap-4 hover:border-sky-400 transition duration-300">
-                    <span class="text-2xl bg-sky-500/10 p-2 rounded-lg border border-sky-500/20">🇪🇸</span>
-                    <div>
-                        <h3 class="font-bold text-sky-400">Eğitim</h3>
-                        <p class="text-sm text-slate-400">3 yıl boyunca İspanya'da eğitim aldım.</p>
-                    </div>
+            <div class="grid md:grid-cols-2 gap-6 relative">
+                <div class="flex flex-col gap-2">
+                    <textarea id="girisMetni" oninput="canliCeviriMotoru()" placeholder="Type in English or Spanish, the AI will handle the rest..." class="w-full h-44 bg-slate-950/70 border border-slate-800/80 rounded-2xl p-4 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-cyan-500/50 focus:shadow-[0_0_20px_-5px_rgba(34,211,238,0.2)] transition duration-300 resize-none font-medium"></textarea>
                 </div>
 
-                <div class="kart bg-slate-900/80 border border-pink-500/20 p-4 rounded-xl flex items-center gap-4 hover:border-pink-400 transition duration-300">
-                    <span class="text-2xl bg-pink-500/10 p-2 rounded-lg border border-pink-500/20">🏀</span>
-                    <div>
-                        <h3 class="font-bold text-pink-400">Yaşam ve Aktivite</h3>
-                        <p class="text-sm text-slate-400">Sporla yakından ilgileniyorum, aktif kalmayı seviyorum.</p>
+                <div class="flex flex-col gap-2">
+                    <div id="cevirilenMetin" class="w-full h-44 bg-slate-950/40 border border-slate-800/40 rounded-2xl p-4 text-slate-500 font-semibold overflow-y-auto select-all flex items-center justify-center text-center text-xl transition-all duration-300 leading-relaxed">
+                        The translation will appear here as soon as you start typing.
                     </div>
                 </div>
-
-                <div class="kart bg-slate-900/80 border border-purple-500/20 p-4 rounded-xl flex items-center gap-4 hover:border-purple-400 transition duration-300">
-                    <span class="text-2xl bg-purple-500/10 p-2 rounded-lg border border-purple-500/20">🗣️</span>
-                    <div>
-                        <h3 class="font-bold text-purple-400">Dil Yetkinliği</h3>
-                        <p class="text-sm text-slate-400">Yeterli seviyede akıcı İngilizce biliyorum.</p>
-                    </div>
-                </div>
-                
             </div>
 
         </div>
     </main>
 
-    <footer class="text-center py-8 text-xs text-slate-600 tracking-wide">
-        © 2026 Egemen. Tüm Hakları Saklıdır.
+    <footer class="text-center py-8 text-xs text-slate-600 font-medium tracking-widest uppercase relative z-10">
+        © 2026 Egemen Premium AI. All Rights Reserved.
     </footer>
 
     <script>
-        function temaDegistir() {
-            const htmlTaban = document.documentElement;
-            const gövde = document.body;
-            
-            if (htmlTaban.classList.contains('dark')) {
-                htmlTaban.classList.remove('dark');
-                gövde.className = "bg-gradient-to-br from-slate-100 via-indigo-50 to-slate-100 text-slate-900 min-h-screen font-sans antialiased flex flex-col justify-between";
-                
-                document.querySelectorAll('.kart').forEach(kart => {
-                    kart.classList.remove('bg-slate-900/70', 'bg-slate-900/80', 'border-indigo-500/30', 'border-sky-500/20', 'border-pink-500/20', 'border-purple-500/20');
-                    kart.classList.add('bg-white', 'border-slate-200');
-                });
-                document.querySelector('nav button').className = "cursor-pointer p-2 rounded-lg bg-white border border-slate-200 text-amber-500 font-bold text-sm transition shadow-sm";
-            } else {
-                htmlTaban.classList.add('dark');
-                location.reload();
+        let timeout = null;
+
+        function canliCeviriMotoru() {
+            const giris = document.getElementById("girisMetni").value.trim();
+            const cikisKutusu = document.getElementById("cevirilenMetin");
+            const dilEtiketi = document.getElementById("algilananDilEtiketi");
+
+            clearTimeout(timeout);
+
+            if (giris === "") {
+                cikisKutusu.innerText = "The translation will appear here as soon as you start typing.";
+                cikisKutusu.className = "w-full h-44 bg-slate-950/40 border border-slate-800/40 rounded-2xl p-4 text-slate-500 font-semibold overflow-y-auto flex items-center justify-center text-center text-xl transition-all duration-300";
+                dilEtiketi.innerText = "🤖 AI Engine Ready...";
+                dilEtiketi.className = "text-xs bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/40 text-indigo-300 font-black px-4 py-1.5 rounded-full tracking-wide";
+                return;
             }
+
+            cikisKutusu.innerText = "Translating...";
+            cikisKutusu.className = "w-full h-44 bg-slate-950/40 border border-cyan-500/20 rounded-2xl p-4 text-cyan-400 font-bold overflow-y-auto flex items-center justify-center text-center text-xl animate-pulse";
+
+            timeout = setTimeout(() => {
+                let sourceLang = "en";
+                let targetLang = "es";
+                
+                const ispanolcaKelimeler = ["hola", "gracias", "agua", "casa", "bueno", "amigo", "playa", "sol", "el", "la", "los", "las", "y", "en", "que", "de", "buenos", "buenas", "dias", "tardes", "noches"];
+                const kelimeler = giris.toLowerCase().split(/\s+/);
+                const isSpanish = kelimeler.some(w => ispanolcaKelimeler.includes(w)) || /[áéíóúñ¿¡]/.test(giris);
+
+                if (isSpanish) {
+                    sourceLang = "es";
+                    targetLang = "en";
+                }
+
+                const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&q=${encodeURIComponent(giris)}`;
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data && data[0] && data[0][0] && data[0][0][0]) {
+                            const translatedText = data[0].map(s => s[0]).join("");
+                            cikisKutusu.innerText = translatedText;
+                            cikisKutusu.className = "w-full h-44 bg-slate-950/50 border border-emerald-500/30 rounded-2xl p-4 text-emerald-400 text-2xl font-extrabold overflow-y-auto flex items-center justify-center text-center shadow-[0_0_30px_-5px_rgba(16,185,129,0.2)]";
+                            
+                            dilEtiketi.innerText = sourceLang === "en" ? "🇬🇧 EN ➔ 🇪🇸 ES" : "🇪🇸 ES ➔ 🇬🇧 EN";
+                            dilEtiketi.className = "text-xs bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 font-black px-4 py-1.5 rounded-full tracking-widest";
+                        } else {
+                            cikisKutusu.innerText = "Translation error.";
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        cikisKutusu.innerText = "Connection lost.";
+                    });
+            }, 400);
         }
     </script>
 </body>
